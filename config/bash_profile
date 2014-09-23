@@ -1,0 +1,4 @@
+# -*- mode: sh -*-
+
+source ~/.virtualenvwrapper-conf
+source ~/.session-conf
