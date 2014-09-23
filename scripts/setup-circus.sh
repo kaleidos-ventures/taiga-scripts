@@ -46,3 +46,4 @@ exit 0
 EOF
 
 sudo mv /tmp/rc.local /etc/rc.local
+sudo chmod +x /etc/rc.local
