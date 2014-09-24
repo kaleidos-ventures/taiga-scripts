@@ -24,8 +24,8 @@ source ./scripts/setup-nginx.sh
 
 # Setup and install python related dependencies
 source ./scripts/setup-buildessential.sh
-source ./scripts/setup-nodejs.sh
 source ./scripts/setup-ruby.sh
+source ./scripts/setup-nodejs.sh
 source ./scripts/setup-python.sh
 source ./scripts/setup-circus.sh
 source ./scripts/setup-utils.sh

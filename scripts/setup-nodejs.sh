@@ -7,7 +7,7 @@ sudo ln -sf $nodejspath ${nodejspath::-2}
 
 function npm-install {
     for pkg in $@; do
-        echo -e "${cyan}[NPM] Installing package $pkg..."
+        echo -e "[NPM] Installing package $pkg..."
         sudo npm install -g $pkg
     done
 }
