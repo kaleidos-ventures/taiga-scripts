@@ -7,7 +7,7 @@ rabbit-create-user-if-needed taiga taiga  # username, password
 rabbit-create-vhost-if-needed taiga
 rabbit-set-permissions taiga taiga ".*" ".*" ".*" # username, vhost, configure, read, write
 
-create-pyenv "env"
+create-pyenv-if-needed "env"
 
 pushd ~/taiga-back
 source ~/env/bin/activate
