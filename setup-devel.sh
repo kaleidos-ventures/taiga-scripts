@@ -3,9 +3,18 @@
 rootdir=`pwd`
 username="$USER"
 
-# Nginx configuration
-scheme="https"
-hostname="taiga.projects.kaleidos.net"
+echo -n "Scheme (default http): "
+read scheme
+echo -n "Hostname (default: localhost:8000): "
+read hostname
+
+if [ -z "$hostname" ]; then
+    hostname="localhost:8000"
+fi
+
+if [ -z "$scheme" ]; then
+    scheme="http"
+fi
 
 pushd ~
 mkdir -p logs
