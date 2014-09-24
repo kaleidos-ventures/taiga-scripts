@@ -23,7 +23,7 @@ source ./scripts/setup-rabbitmq.sh
 source ./scripts/setup-nginx.sh
 
 # Setup and install python related dependencies
-source ./scripts/setup-builtessential.sh
+source ./scripts/setup-buildessential.sh
 source ./scripts/setup-nodejs.sh
 source ./scripts/setup-ruby.sh
 source ./scripts/setup-python.sh
