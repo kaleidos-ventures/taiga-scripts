@@ -1,6 +1,5 @@
 #!/bin/bash
 
-apt-install-if-needed libzmq3-dev
 sudo pip2 install circus
 
 cat > /home/${username}/conf/circus.ini <<EOF
