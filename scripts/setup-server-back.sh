@@ -1,7 +1,6 @@
 #!/bin/bash
-apt-install-if-needed libjpeg-dev libfreetype6-dev zlib1g-dev
 
-dropdb-if-needed taiga
+# dropdb-if-needed taiga
 createdb-if-needed taiga
 
 rabbit-create-user-if-needed taiga taiga  # username, password

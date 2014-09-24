@@ -15,7 +15,7 @@ config = {
         "en": "English"
     }
 
-    publicRegisterEnabled: true
+    publicRegisterEnabled: false
     privacyPolicyUrl: null
     termsOfServiceUrl: null
 }
