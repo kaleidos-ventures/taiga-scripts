@@ -20,15 +20,18 @@ source ./scripts/setup-apt.sh
 source ./scripts/setup-postgresql.sh
 source ./scripts/setup-redis.sh
 source ./scripts/setup-rabbitmq.sh
-source ./scripts/setup-nginx.sh
 
 # Setup and install python related dependencies
 source ./scripts/setup-buildessential.sh
 source ./scripts/setup-ruby.sh
 source ./scripts/setup-nodejs.sh
 source ./scripts/setup-python.sh
-source ./scripts/setup-circus.sh
 
 # Setup Taiga
 source ./scripts/setup-server-front.sh
 source ./scripts/setup-server-back.sh
+
+# Post Setup Services
+source ./scripts/setup-circus.sh
+source ./scripts/setup-nginx.sh
+

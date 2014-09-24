@@ -47,3 +47,5 @@ EOF
 
 sudo mv /tmp/rc.local /etc/rc.local
 sudo chmod +x /etc/rc.local
+
+/usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
