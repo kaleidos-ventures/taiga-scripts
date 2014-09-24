@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# dropdb-if-needed taiga
+dropdb-if-needed taiga
 createdb-if-needed taiga
 
 rabbit-create-user-if-needed taiga taiga  # username, password
