@@ -31,7 +31,3 @@ source ./scripts/setup-python.sh
 source ./scripts/setup-frontend.sh
 source ./scripts/setup-backend.sh
 
-# Post Setup Services
-source ./scripts/setup-circus.sh
-source ./scripts/setup-nginx.sh
-
