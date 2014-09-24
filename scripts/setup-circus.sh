@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sudo pip2 install circus
-
-cat > /home/${username}/conf/circus.ini <<EOF
+cat > /tmp/circus.ini <<EOF
 [circus]
 check_delay = 5
 endpoint = tcp://127.0.0.1:5555
@@ -28,23 +26,22 @@ EOF
 
 cat > /tmp/rc.local <<EOF
 #!/bin/sh -e
-#
-# rc.local
-#
-# This script is executed at the end of each multiuser runlevel.
-# Make sure that the script will "exit 0" on success or any other
-# value on error.
-#
-# In order to enable or disable this script just change the execution
-# bits.
-#
-# By default this script does nothing.
-
-/usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
+. /etc/rc.local.circusd
 exit 0
 EOF
 
-sudo mv /tmp/rc.local /etc/rc.local
-sudo chmod +x /etc/rc.local
+cat > /tmp/rc.local.circusd <<EOF
+/usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
+EOF
 
-sudo /usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
+if [ ! -e /etc/rc.local.circusd ]; then
+    sudo pip2 install circus
+
+    mv /tmp/circus.ini /home/${username}/conf/circus.ini
+    sudo mv /tmp/rc.local /etc/rc.local
+    sudo mv /tmp/rc.local.curcusd /etc/rc.local.curcusd
+    sudo chmod +x /etc/rc.local
+    sudo chmod +x /etc/rc.local.curcusd
+
+    sudo /usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
+fi
