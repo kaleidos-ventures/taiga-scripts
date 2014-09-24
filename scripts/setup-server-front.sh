@@ -32,7 +32,7 @@ angular.module("taigaLocalConfig", []).value("localconfig", config)
 EOF
 
 pushd ~/taiga-front
-sudo rm -rf /home/#{username}/tmp
+sudo rm -rf /home/${username}/tmp
 npm install
 bower install
 gulp deploy
