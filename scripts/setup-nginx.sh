@@ -41,7 +41,7 @@ EOF
 cat > /tmp/taiga.conf <<EOF
 server {
     listen 80 default_server;
-    server_name ${hostname};
+    server_name _;
 
     client_max_body_size 50M;
     charset utf-8;

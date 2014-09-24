@@ -4,8 +4,8 @@ rootdir=`pwd`
 username="$USER"
 
 # Nginx configuration
-scheme="https"
-hostname="taiga.projects.kaleidos.net"
+scheme="http"
+hostname="localhost:8000"
 
 pushd ~
 mkdir -p logs
@@ -28,10 +28,5 @@ source ./scripts/setup-nodejs.sh
 source ./scripts/setup-python.sh
 
 # Setup Taiga
-source ./scripts/setup-server-front.sh
-source ./scripts/setup-server-back.sh
-
-# Post Setup Services
-source ./scripts/setup-circus.sh
-source ./scripts/setup-nginx.sh
-
+source ./scripts/setup-frontend.sh
+source ./scripts/setup-backend.sh
