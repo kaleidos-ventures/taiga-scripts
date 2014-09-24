@@ -28,9 +28,7 @@ source ./scripts/setup-ruby.sh
 source ./scripts/setup-nodejs.sh
 source ./scripts/setup-python.sh
 source ./scripts/setup-circus.sh
-source ./scripts/setup-utils.sh
 
 # Setup Taiga
-source ./scripts/setup-repos.sh
 source ./scripts/setup-server-front.sh
 source ./scripts/setup-server-back.sh
