@@ -1,7 +1,5 @@
 # gem.sh
 
-apt-install-if-needed libgdbm-dev libncurses5-dev automake libtool bison libffi-dev curl
-
 if [ ! -e ~/.rvm ]; then
     curl -L https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm

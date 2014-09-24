@@ -20,7 +20,6 @@ function npm-install-if-needed {
     done
 }
 
-
 function npm-package-not-installed {
     test -z $(npm list -g 2> /dev/null | grep "$1@" | cut -d'@' -f2)
 }

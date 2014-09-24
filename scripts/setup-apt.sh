@@ -1,6 +1,6 @@
 function apt-install {
     for pkg in $@; do
-        echo -e "${cyan}[APT-GET] Installing package $pkg..."
+        echo -e "[APT-GET] Installing package $pkg..."
         sudo apt-get install -yq $pkg
     done
 }
