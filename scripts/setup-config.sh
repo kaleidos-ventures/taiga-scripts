@@ -28,6 +28,3 @@ set incsearch
 set fileencoding=utf8
 set encoding=utf8
 EOF
-
-mkdir -p ~/tmp
-sudo chown -R ${username} ~/tmp

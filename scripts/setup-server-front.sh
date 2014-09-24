@@ -23,6 +23,8 @@ config = {
 angular.module("taigaLocalConfig", []).value("localconfig", config)
 EOF
 
+sudo rm -rf /home/#{username}/tmp
+
 pushd ~/taiga-front
 npm install
 bower install
