@@ -77,7 +77,7 @@ EOF
 apt-install-if-needed nginx-full
 
 if [ ! -e /etc/nginx/.taiga ]; then
-    touch /etc/nginx/.taiga
+    sudo touch /etc/nginx/.taiga
 
     sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
     sudo mv /tmp/taiga.conf /etc/nginx/sites-available/default
