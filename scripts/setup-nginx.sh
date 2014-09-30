@@ -46,11 +46,11 @@ server {
     client_max_body_size 50M;
     charset utf-8;
 
-    access_log /home/${username}/logs/nginx.access.log;
-    error_log /home/${username}/logs/nginx.error.log;
+    access_log /home/$USER/logs/nginx.access.log;
+    error_log /home/$USER/logs/nginx.error.log;
 
     location / {
-        root /home/${username}/taiga-front/dist/;
+        root /home/$USER/taiga-front/dist/;
         try_files \$uri \$uri/ /index.html;
     }
 
@@ -65,21 +65,21 @@ server {
     }
 
     location /static {
-        alias /home/${username}/taiga-back/static;
+        alias /home/$USER/taiga-back/static;
     }
 
     location /media {
-        alias /home/${username}/taiga-back/media;
+        alias /home/$USER/taiga-back/media;
     }
 }
 EOF
 
 apt-install-if-needed nginx-full
 
-if [ ! -e /etc/nginx/.taiga ]; then
-    sudo touch /etc/nginx/.taiga
-
+if [ ! -e ~/.setup/nginx ]; then
     sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
     sudo mv /tmp/taiga.conf /etc/nginx/sites-available/default
     sudo /etc/init.d/nginx restart
+
+    touch ~/.setup/nginx
 fi

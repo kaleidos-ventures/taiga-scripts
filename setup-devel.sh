@@ -1,20 +1,5 @@
 #!/bin/bash
 
-rootdir=`pwd`
-username="$USER"
-
-echo -n "Scheme (default http): "
-read scheme
-echo -n "Hostname (default: localhost:8000): "
-read hostname
-
-if [ -z "$hostname" ]; then
-    hostname="localhost:8000"
-fi
-
-if [ -z "$scheme" ]; then
-    scheme="http"
-fi
 
 pushd ~
 mkdir -p logs
@@ -22,6 +7,7 @@ mkdir -p conf
 popd
 
 # Bootstrap
+source ./scripts/setup-vars.sh
 source ./scripts/setup-config.sh
 source ./scripts/setup-apt.sh
 
