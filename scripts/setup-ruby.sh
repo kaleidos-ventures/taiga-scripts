@@ -2,7 +2,7 @@
 
 function gem-install {
     for pkg in $@; do
-        echo -e "${cyan}[NPM] Installing package $pkg..."
+        echo -e "${cyan}[GEM] Installing package $pkg..."
         gem install $pkg
     done
 }
