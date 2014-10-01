@@ -39,9 +39,9 @@ if [ ! -e /etc/rc.local.circusd ]; then
 
     mv /tmp/circus.ini /home/${username}/conf/circus.ini
     sudo mv /tmp/rc.local /etc/rc.local
-    sudo mv /tmp/rc.local.curcusd /etc/rc.local.curcusd
+    sudo mv /tmp/rc.local.circusd /etc/rc.local.circusd
     sudo chmod +x /etc/rc.local
-    sudo chmod +x /etc/rc.local.curcusd
+    sudo chmod +x /etc/rc.local.circusd
 
     sudo /usr/local/bin/circusd --daemon /home/${username}/conf/circus.ini
 fi
