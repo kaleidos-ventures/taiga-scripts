@@ -1,7 +1,5 @@
 # rabbitmq.sh
 
-apt-install-if-needed rabbitmq-server
-
 function rabbit-create-user-if-needed {
     username=$1
     password=$2
@@ -31,3 +29,10 @@ function rabbit-activate-plugin {
         sudo /etc/init.d/rabbitmq-server start
     fi
 }
+
+
+if [ ! -e ~/.setup/rabbitmq ]; then
+    touch ~/.setup/rabbitmq
+
+    apt-install-if-needed rabbitmq-server
+fi
