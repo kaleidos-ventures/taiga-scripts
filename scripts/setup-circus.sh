@@ -9,16 +9,19 @@ statsd = true
 
 [watcher:taiga]
 working_dir = /home/$USER/taiga-back
-cmd = gunicorn -w 3 -t 60 --pythonpath=. taiga.wsgi
+cmd = gunicorn -w 3 -t 60 --pythonpath=. -b 0.0.0.0:8001 taiga.wsgi
 uid = $USER
 numprocesses = 1
 autostart = true
 send_hup = true
 stdout_stream.class = FileStream
-stdout_stream.filename = /home/$USER/logs/gunicorn.log
-stdout_stream.refresh_time = 0.3
-stdout_stream.max_bytes = 1073741824
-stdout_stream.backup_count = 2
+stdout_stream.filename = /home/$USER/logs/gunicorn.stdout.log
+stdout_stream.max_bytes = 10485760
+stdout_stream.backup_count = 4
+stderr_stream.class = FileStream
+stderr_stream.filename = /home/$USER/logs/gunicorn.stderr.log
+stderr_stream.max_bytes = 10485760
+stderr_stream.backup_count = 4
 
 [env:taiga]
 PATH = \$PATH:/home/$USER/.virtualenvs/taiga/bin
