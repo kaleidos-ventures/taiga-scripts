@@ -32,9 +32,9 @@ EOF
 cat >> ~/.tmux-conf.sh <<EOF
 function taiga-runserver {
     session=taiga
-    state=$(tmux ls 2>/dev/null)
-    if $(echo $state | grep -q "$session"); then
-        if $(echo $state | grep -qv "(attached)"); then
+    state=\$(tmux ls 2>/dev/null)
+    if \$(echo $state | grep -q "$session"); then
+        if \$(echo $state | grep -qv "(attached)"); then
             tmux attach -t $session
         fi
         tmux select-window -t servers
