@@ -37,6 +37,9 @@ if [ ! -e ~/.setup/taiga-front ]; then
 
     sudo rm -rf /home/$USER/tmp
     npm install
+
+    sudo rm -rf /home/$USER/tmp
+
     bower install
     gulp deploy
     popd
