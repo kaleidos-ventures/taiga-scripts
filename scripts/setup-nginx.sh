@@ -41,7 +41,10 @@ EOF
 cat > /tmp/taiga.conf <<EOF
 server {
     listen 80 default_server;
+    listen 8000 default_server;
     server_name _;
+
+    large_client_header_buffers 4 32k;
 
     client_max_body_size 50M;
     charset utf-8;
@@ -60,7 +63,7 @@ server {
         proxy_set_header X-Scheme \$scheme;
         proxy_set_header X-Forwarded-Proto \$scheme;
         proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
-        proxy_pass http://127.0.0.1:8000/api;
+        proxy_pass http://127.0.0.1:8001/api;
         proxy_redirect off;
     }
 
