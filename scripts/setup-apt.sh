@@ -18,3 +18,7 @@ function apt-install-if-needed {
 function package-not-installed {
     test -z "$(sudo dpkg -s $1 2> /dev/null | grep Status)"
 }
+
+sudo apt-get -y update
+sudo apt-get -y upgrade
+sudo apt-get -y dist-upgrade
