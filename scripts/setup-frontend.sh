@@ -29,7 +29,7 @@ if [ ! -e ~/.setup/taiga-front ]; then
 
     git clone https://github.com/taigaio/taiga-front.git taiga-front
 
-    gem-install-if-needed sass
+    gem-install-if-needed sass scss-lint
     npm-install-if-needed gulp bower
 
     pushd ~/taiga-front
