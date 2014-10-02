@@ -21,12 +21,11 @@ function gem-package-not-installed {
 
 if [ ! -e ~/.setup/ruby ]; then
     touch ~/.setup/ruby
-
     rm -rf ~/.rvm
 
     curl -L https://get.rvm.io | bash -s stable
     source ~/.rvm/scripts/rvm
-    echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
+    # echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
     rvm install 2.1.2
     rvm use 2.1.2 --default
 fi

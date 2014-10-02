@@ -11,10 +11,6 @@ export PATH=~/.local/bin:$PATH
 source ~/.local/bin/virtualenvwrapper.sh
 EOF
 
-cat >> ~/.bash_profile <<EOF
-source ~/.virtualenvwrapper-conf.sh
-EOF
-
 source ~/.virtualenvwrapper-conf.sh
 
 function mkvirtualenv-if-needed {

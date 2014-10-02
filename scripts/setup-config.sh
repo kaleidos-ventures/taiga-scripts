@@ -29,7 +29,7 @@ set fileencoding=utf8
 set encoding=utf8
 EOF
 
-cat >> ~/.tmux-conf.sh <<EOF
+cat > ~/.tmux-conf.sh <<EOF
 function taiga-runserver {
     session=taiga
     state=\$(tmux ls 2>/dev/null)
@@ -61,10 +61,8 @@ function taiga-runserver-back {
 }
 EOF
 
-cat >> ~/.bash_profile <<EOF
-source ~/.tmux-conf.sh
+cat > ~/.bash_profile <<EOF
+[[ -s "\$HOME/.rvm/scripts/rvm" ]] && source "\$HOME/.rvm/scripts/rvm"
+[[ -s "\$HOME/.virtualenvwrapper-conf.sh" ]] && source "\$HOME/.virtualenvwrapper-conf.sh"
+[[ -s "\$HOME/.tmux-conf.sh" ]] && source "\$HOME/.tmux-conf.sh"
 EOF
-
-source ~/.tmux-conf.sh
-
-
