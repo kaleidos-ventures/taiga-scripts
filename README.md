@@ -10,7 +10,7 @@ Scripts for initial deploy of taiga services.
 
 ## Setup server-like environment ##
 
-This environment is not ready for high scale but should work well for small organziations
+This environment is not ready for high scale but should work well for small organizations
 using taiga.
 
 Having fresh and updated ubuntu 14.04:
@@ -23,10 +23,10 @@ $ bash setup-server.sh
 
 ## Setup development-like environment ##
 
-This setup is much like the previous but with few differences:
+This setup is much like the previous but with a few differences:
 
-- Not installs services like nginx that only serves for production.
-- Set all hostnames to localhost for easy run everything on localhost.
+- Do not install services like nginx, because they are only necessary for production
+- Set all hostnames to localhost to easily run everything on localhost
 
 Having fresh and updated ubuntu 14.04:
 
