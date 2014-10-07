@@ -15,6 +15,7 @@ if [ ! -e ~/.setup/taiga-back ]; then
     dropdb-if-needed taiga
 
     git clone https://github.com/taigaio/taiga-back.git taiga-back
+    git checkout stable
     createdb-if-needed taiga
 
     rabbit-create-user-if-needed taiga taiga  # username, password
