@@ -3,10 +3,30 @@
 pushd ~
 
 cat > /tmp/settings.py <<EOF
+from .common import *
+
 MEDIA_URL = "${scheme}://${hostname}/media/"
 STATIC_URL = "${scheme}://${hostname}/static/"
 ADMIN_MEDIA_PREFIX = "${scheme}://${hostname}/static/admin/"
 SITES["front"]["domain"] = "${hostname}"
+
+DEBUG = True
+TEMPLATE_DEBUG = True
+PUBLIC_REGISTER_ENABLED = True
+
+DEFAULT_FROM_EMAIL = "no-reply@example.com"
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+#EMAIL_USE_TLS = False
+#EMAIL_HOST = "localhost"
+#EMAIL_HOST_USER = ""
+#EMAIL_HOST_PASSWORD = ""
+#EMAIL_PORT = 25
+
+REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
+    "rest_framework.renderers.JSONRenderer",
+)
 EOF
 
 if [ ! -e ~/.setup/taiga-back ]; then
@@ -21,16 +41,12 @@ if [ ! -e ~/.setup/taiga-back ]; then
     rabbit-create-user-if-needed taiga taiga  # username, password
     rabbit-create-vhost-if-needed taiga
     rabbit-set-permissions taiga taiga ".*" ".*" ".*" # username, vhost, configure, read, write
-
     mkvirtualenv-if-needed taiga
 
     pushd ~/taiga-back
 
     # Settings
-    cp settings/local.py.example settings/local.py
-    cat /tmp/settings.py >> settings/local.py
-    rm /tmp/settings.py
-
+    mv /tmp/settings.py settings/local.py
     workon taiga
 
     pip install -r requirements.txt
@@ -41,9 +57,7 @@ if [ ! -e ~/.setup/taiga-back ]; then
     python manage.py sample_data
 
     deactivate
-
     popd
-
     touch ~/.setup/taiga-back
 fi
 
