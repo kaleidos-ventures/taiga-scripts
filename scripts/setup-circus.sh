@@ -9,7 +9,8 @@ statsd = true
 
 [watcher:taiga]
 working_dir = /home/$USER/taiga-back
-cmd = gunicorn -w 3 -t 60 --pythonpath=. -b 0.0.0.0:8001 taiga.wsgi
+cmd = gunicorn
+args = -w 3 -t 60 --pythonpath=. -b 0.0.0.0:8001 taiga.wsgi
 uid = $USER
 numprocesses = 1
 autostart = true
@@ -24,29 +25,26 @@ stderr_stream.max_bytes = 10485760
 stderr_stream.backup_count = 4
 
 [env:taiga]
-PATH = \$PATH:/home/$USER/.virtualenvs/taiga/bin
+PATH = $PATH:/home/$USER/.virtualenvs/taiga/bin
 EOF
 
-cat > /tmp/rc.local <<EOF
-#!/bin/sh -e
-. /etc/rc.local.circusd
-exit 0
-EOF
+cat > /tmp/circus.conf <<EOF
+start on filesystem and net-device-up IFACE=lo
+stop on runlevel [016]
 
-cat > /tmp/rc.local.circusd <<EOF
-/usr/local/bin/circusd --daemon /home/$USER/conf/circus.ini
+respawn
+exec /usr/local/bin/circusd /home/$USER/conf/circus.ini
 EOF
 
 if [ ! -e ~/.setup/circus ]; then
     sudo pip2 install circus
 
     mv /tmp/circus.ini /home/$USER/conf/circus.ini
-    sudo mv /tmp/rc.local /etc/rc.local
-    sudo mv /tmp/rc.local.circusd /etc/rc.local.circusd
+    sudo mv /tmp/circus.conf /etc/init/circus.conf
+
     sudo chmod +x /etc/rc.local
     sudo chmod +x /etc/rc.local.circusd
 
-    sudo /usr/local/bin/circusd --daemon /home/$USER/conf/circus.ini
-
+    sudo service circus start
     touch ~/.setup/circus
 fi
