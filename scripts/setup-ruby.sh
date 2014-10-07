@@ -2,8 +2,8 @@
 
 function gem-install {
     for pkg in $@; do
-        echo -e "${cyan}[GEM] Installing package $pkg..."
-        gem install $pkg
+        echo -e "[GEM] Installing package $pkg..."
+        gem install --user-install $pkg
     done
 }
 
@@ -19,15 +19,9 @@ function gem-package-not-installed {
     test -z "$(gem list 2> /dev/null | grep "$1")"
 }
 
-if [ ! -e ~/.setup/ruby ]; then
-    touch ~/.setup/ruby
-    rm -rf ~/.rvm
+cat > ~/.ruby-conf.sh <<EOF
+export PATH=/home/$USER/.gem/ruby/1.9.1/bin:\$PATH
+EOF
 
-    curl -L https://get.rvm.io | bash -s stable
-    source ~/.rvm/scripts/rvm
-    # echo "source ~/.rvm/scripts/rvm" >> ~/.bashrc
-    rvm install 2.1.2
-    rvm use 2.1.2 --default
-fi
-
-source ~/.rvm/scripts/rvm
+apt-install-if-needed ruby
+source ~/.ruby-conf.sh
