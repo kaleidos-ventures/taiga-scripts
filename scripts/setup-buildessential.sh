@@ -6,6 +6,5 @@ if [ ! -e ~/.setup/buildessential ]; then
     apt-install-if-needed libgdbm-dev libncurses5-dev automake libtool libffi-dev curl
 
     # Utils
-    apt-install-if-needed git
-    apt-install-if-needed tmux
+    apt-install-if-needed git tmux postfix
 fi
