@@ -7,7 +7,7 @@ cat > ~/.virtualenvwrapper-conf.sh <<EOF
 export PYTHONPATH="/home/$USER/.local/lib/python3.4/site-packages"
 export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON="/usr/bin/python3.4"
-export PATH=~/.local/bin:$PATH
+export PATH=~/.local/bin:\$PATH
 source ~/.local/bin/virtualenvwrapper.sh
 EOF
 
