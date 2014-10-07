@@ -6,6 +6,7 @@ cat > /tmp/settings.py <<EOF
 MEDIA_URL = "${scheme}://${hostname}/media/"
 STATIC_URL = "${scheme}://${hostname}/static/"
 ADMIN_MEDIA_PREFIX = "${scheme}://${hostname}/static/admin/"
+SITES["front"]["domain"] = "${hostname}"
 EOF
 
 if [ ! -e ~/.setup/taiga-back ]; then
