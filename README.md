@@ -2,11 +2,20 @@
 
 Scripts for initial deploy of taiga services.
 
+**WARNING: that scripts are in aplha state**
+
 ## Requirements ##
 
 - Ubuntu Server 14.04
 - Bash
 - Git
+
+## Notes / Warnings
+
+- In aplha state, not tested in much environments and suffer a lot of changes.
+- Designed to work mainly for taiga-vagrant(but can works without it)
+- Not supports updates. Reprovisioning is stil in development.
+- Does not supports installation with root user.
 
 ## Setup server-like environment ##
 
