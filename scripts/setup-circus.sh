@@ -42,9 +42,6 @@ if [ ! -e ~/.setup/circus ]; then
     mv /tmp/circus.ini /home/$USER/conf/circus.ini
     sudo mv /tmp/circus.conf /etc/init/circus.conf
 
-    sudo chmod +x /etc/rc.local
-    sudo chmod +x /etc/rc.local.circusd
-
     sudo service circus start
     touch ~/.setup/circus
 fi
