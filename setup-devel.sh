@@ -13,8 +13,8 @@ source ./scripts/setup-apt.sh
 
 # Setup and install services dependencies
 source ./scripts/setup-postgresql.sh
-source ./scripts/setup-redis.sh
-source ./scripts/setup-rabbitmq.sh
+#source ./scripts/setup-redis.sh
+#source ./scripts/setup-rabbitmq.sh
 
 # Setup and install python related dependencies
 source ./scripts/setup-buildessential.sh
