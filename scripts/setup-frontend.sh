@@ -2,24 +2,15 @@
 
 pushd ~
 
-cat > /tmp/main.coffee <<EOF
-config = {
-    host: "${hostname}"
-    scheme: "${scheme}"
-
-    debug: true
-
-    defaultLanguage: "en"
-    languageOptions: {
-        "en": "English"
-    }
-
-    publicRegisterEnabled: false
-    privacyPolicyUrl: null
-    termsOfServiceUrl: null
+cat > /tmp/main.json <<EOF
+{
+    "api": "http://${hostname}/api/v1/",
+    "eventsUrl": "ws://${hostname}/events",
+    "debug": "true",
+    "publicRegisterEnabled": true,
+    "privacyPolicyUrl": null,
+    "termsOfServiceUrl": null
 }
-
-angular.module("taigaLocalConfig", []).value("localconfig", config)
 EOF
 
 
@@ -34,7 +25,7 @@ if [ ! -e ~/.setup/taiga-front ]; then
     npm-install-if-needed gulp bower
 
     pushd ~/taiga-front
-    mv /tmp/main.coffee app/config
+    mv /tmp/main.json conf/
 
     sudo rm -rf /home/$USER/tmp
     npm install
