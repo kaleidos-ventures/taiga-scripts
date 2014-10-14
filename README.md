@@ -9,16 +9,9 @@ It installs:
 
 **WARNING: that scripts are in aplha state**
 
-## Requirements ##
-
-- Ubuntu Server 14.04
-- Bash
-- Git
-
 ## Documentation ##
 
-link:http://taigaio.github.io/taiga-doc/dist/setup-alternatives.html#_setup_using_strong_taiga_scripts_strong[taiga-scripts documentation]
-
+http://taigaio.github.io/taiga-doc/dist/setup-alternatives.html#setup-taiga-scripts
 
 ## Community ##
 
