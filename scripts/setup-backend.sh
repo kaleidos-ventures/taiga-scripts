@@ -35,6 +35,7 @@ if [ ! -e ~/.setup/taiga-back ]; then
     dropdb-if-needed taiga
 
     git clone https://github.com/taigaio/taiga-back.git taiga-back
+    pushd ~/taiga-back
     git checkout -f 1.1.0
     createdb-if-needed taiga
 
@@ -42,8 +43,6 @@ if [ ! -e ~/.setup/taiga-back ]; then
     # rabbit-create-vhost-if-needed taiga
     # rabbit-set-permissions taiga taiga ".*" ".*" ".*" # username, vhost, configure, read, write
     mkvirtualenv-if-needed taiga
-
-    pushd ~/taiga-back
 
     # Settings
     mv /tmp/settings.py settings/local.py
