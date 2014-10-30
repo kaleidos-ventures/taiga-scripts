@@ -15,11 +15,6 @@ else
     if [ -z "$scheme" ]; then
         scheme="http"
     fi
-
-    cat > ~/.setup/data.sh <<EOF
-scheme="${scheme}"
-hostname="${hostname}"
-EOF
 fi
 
 echo "Installing taigaio with user=$USER host=$hostname scheme=$scheme"

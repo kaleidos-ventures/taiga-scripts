@@ -1,43 +1,5 @@
 #!/bin/bash
 
-cat > /tmp/nginx.conf <<EOF
-user www-data;
-worker_processes 2;
-pid /var/run/nginx.pid;
-
-events {
-    worker_connections 1024;
-}
-
-http {
-    sendfile on;
-    tcp_nopush on;
-    tcp_nodelay on;
-    keepalive_timeout 15;
-    types_hash_max_size 2048;
-
-    include /etc/nginx/mime.types;
-    default_type application/octet-stream;
-
-    access_log /var/log/nginx/access.log;
-    error_log /var/log/nginx/error.log;
-
-    gzip on;
-    gzip_disable "msie6";
-
-    gzip_vary on;
-    gzip_proxied any;
-    gzip_comp_level 6;
-    gzip_buffers 16 8k;
-    gzip_http_version 1.1;
-    gzip_types text/plain text/css application/json application/x-javascript
-                    text/xml application/xml application/xml+rss text/javascript;
-
-    include /etc/nginx/conf.d/*.conf;
-    include /etc/nginx/sites-enabled/*;
-}
-EOF
-
 cat > /tmp/taiga.conf <<EOF
 server {
     listen 80 default_server;
@@ -78,11 +40,9 @@ server {
 EOF
 
 apt-install-if-needed nginx-full
-
-if [ ! -e ~/.setup/nginx ]; then
-    sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
-    sudo mv /tmp/taiga.conf /etc/nginx/sites-available/default
-    sudo /etc/init.d/nginx restart
-
-    touch ~/.setup/nginx
-fi
+# sudo mv /tmp/nginx.conf /etc/nginx/nginx.conf
+sudo mv /tmp/taiga.conf /etc/nginx/sites-available/taiga
+sudo rm -rf /etc/nginx/sites-enabled/taiga
+sudo rm -rf /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/taiga /etc/nginx/sites-enabled/taiga
+sudo service nginx restart

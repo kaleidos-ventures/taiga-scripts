@@ -1,14 +1,19 @@
 #!/bin/bash
 
+BACKEND_VERSION="stable"
+
 pushd ~
 
 cat > /tmp/settings.py <<EOF
 from .common import *
 
-MEDIA_URL = "${scheme}://${hostname}/media/"
-STATIC_URL = "${scheme}://${hostname}/static/"
-ADMIN_MEDIA_PREFIX = "${scheme}://${hostname}/static/admin/"
-SITES["front"]["domain"] = "${hostname}"
+MEDIA_URL = "/media/"
+STATIC_URL = "static/"
+ADMIN_MEDIA_PREFIX = "/static/admin/"
+
+# This should change if you want generate urls in emails
+# for external dns.
+SITES["front"]["domain"] = "localhost:8000"
 
 DEBUG = True
 TEMPLATE_DEBUG = True
@@ -29,15 +34,12 @@ REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
 )
 EOF
 
-if [ ! -e ~/.setup/taiga-back ]; then
-    # Initial clean
-    rm -rf taiga-back
-    dropdb-if-needed taiga
-
-    git clone https://github.com/taigaio/taiga-back.git taiga-back
-    pushd ~/taiga-back
-    git checkout stable 
+if [ ! -e ~/taiga-back ]; then
     createdb-if-needed taiga
+    git clone https://github.com/taigaio/taiga-back.git taiga-back
+
+    pushd ~/taiga-back
+    git checkout -f stable
 
     # rabbit-create-user-if-needed taiga taiga  # username, password
     # rabbit-create-vhost-if-needed taiga
@@ -57,7 +59,17 @@ if [ ! -e ~/.setup/taiga-back ]; then
 
     deactivate
     popd
-    touch ~/.setup/taiga-back
+else
+    pushd ~/taiga-back
+    git fetch
+    git checkout -f stable
+    git reset --hard origin/stable
+
+    workon taiga
+    pip install -r requirements.txt
+    python manage.py migrate --noinput
+    sudo service circus restart
+    popd
 fi
 
 popd

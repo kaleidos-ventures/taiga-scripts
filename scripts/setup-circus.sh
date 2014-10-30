@@ -26,6 +26,12 @@ stderr_stream.backup_count = 4
 
 [env:taiga]
 PATH = $PATH:/home/$USER/.virtualenvs/taiga/bin
+TERM=rxvt-256color
+SHELL=/bin/bash
+USER=taiga
+LANG=en_US.UTF-8
+HOME=/home/$USER
+PYTHONPATH=/home/$USER/.local/lib/python3.4/site-packages
 EOF
 
 cat > /tmp/circus.conf <<EOF
