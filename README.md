@@ -7,7 +7,7 @@ It installs:
 - taiga-back version 1.1.0
 - taiga-front version 1.1.1
 
-**WARNING: that scripts are in aplha state**
+**WARNING: that scripts are in alpha state**
 
 ## Documentation ##
 
