@@ -36,7 +36,7 @@ if [ ! -e ~/.setup/taiga-back ]; then
 
     git clone https://github.com/taigaio/taiga-back.git taiga-back
     pushd ~/taiga-back
-    git checkout -f 1.1.0
+    git checkout stable 
     createdb-if-needed taiga
 
     # rabbit-create-user-if-needed taiga taiga  # username, password

@@ -20,7 +20,7 @@ if [ ! -e ~/.setup/taiga-front ]; then
 
     git clone https://github.com/taigaio/taiga-front.git taiga-front
     pushd ~/taiga-front
-    git checkout -f 1.1.1
+    git checkout stable 
 
     gem-install-if-needed sass scss-lint
     npm-install-if-needed gulp bower

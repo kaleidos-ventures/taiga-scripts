@@ -4,8 +4,8 @@ Scripts for initial deploy of taiga services.
 
 It installs:
 
-- taiga-back version 1.1.0
-- taiga-front version 1.1.1
+- taiga-back version stable
+- taiga-front version stable
 
 **WARNING: that scripts are in alpha state**
 
