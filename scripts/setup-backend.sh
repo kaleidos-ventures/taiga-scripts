@@ -52,6 +52,7 @@ if [ ! -e ~/taiga-back ]; then
 
     pip install -r requirements.txt
     python manage.py migrate --noinput
+    python manage.py collectstatic --noinput
     python manage.py loaddata initial_user
     python manage.py loaddata initial_project_templates
     python manage.py loaddata initial_role
@@ -68,6 +69,7 @@ else
     workon taiga
     pip install -r requirements.txt
     python manage.py migrate --noinput
+    python manage.py collectstatic --noinput
     sudo service circus restart
     popd
 fi
