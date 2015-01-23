@@ -4,56 +4,37 @@ FRONTEND_VERSION="stable"
 
 pushd ~
 
-cat > /tmp/main.json <<EOF
+cat > /tmp/conf.json <<EOF
 {
     "api": "/api/v1/",
+    "eventsUrl": null,
     "debug": "true",
     "publicRegisterEnabled": true,
+    "feedbackEnabled": false,
     "privacyPolicyUrl": null,
     "termsOfServiceUrl": null,
-    "maxUploadFileSize": null
+    "maxUploadFileSize": null,
+    "gitHubClientId": null,
+    "contribPlugins": []
 }
 EOF
 
 
 if [ ! -e ~/taiga-front ]; then
     # Initial clear
-    git clone https://github.com/taigaio/taiga-front.git taiga-front
+    git clone https://github.com/taigaio/taiga-front-dist.git taiga-front
     pushd ~/taiga-front
     git checkout -f stable
 
-    rm -rf ~/.npm
-    npm cache clear
+    mv /tmp/conf.json dist/js/
 
-    gem-install-if-needed sass scss-lint
-    npm-install-if-needed gulp bower
-
-    mv /tmp/main.json conf/
-
-    sudo rm -rf /home/$USER/tmp
-    npm install
-
-    sudo rm -rf /home/$USER/tmp
-
-    bower install
-    gulp deploy
     popd
 else
     pushd ~/taiga-front
     git fetch
-    git checkout -f stable
+    git checkout -f stable 
     git reset --hard origin/stable
-
-    rm -rf ~/.npm
-    npm cache clear
-
-    npm install
-    bower install
-    gulp deploy
     popd
 fi
 
 popd
-
-
-
