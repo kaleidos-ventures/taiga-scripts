@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-install-if-needed python3 python3-pip python-dev python3-dev python-pip virtualenvwrapper
+apt-install-if-needed python3 python3-pip python-dev python3-dev python-pip virtualenvwrapper libxml2-dev libxslt1-dev
 source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 function mkvirtualenv-if-needed {
