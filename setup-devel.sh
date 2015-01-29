@@ -18,8 +18,6 @@ source ./scripts/setup-postgresql.sh
 
 # Setup and install python related dependencies
 source ./scripts/setup-buildessential.sh
-source ./scripts/setup-ruby.sh
-source ./scripts/setup-nodejs.sh
 source ./scripts/setup-python.sh
 
 # Setup Taiga
