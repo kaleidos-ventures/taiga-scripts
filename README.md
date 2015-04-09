@@ -3,14 +3,14 @@
 ![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
 [![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
 
-Scripts for initial deploy of taiga services.
+Scripts for initial deployment of Taiga services.
 
 It installs:
 
 - taiga-back version stable
 - taiga-front version stable
 
-**WARNING: that scripts are in alpha state**
+**WARNING: these scripts are in an alpha state**
 
 ## Documentation ##
 
