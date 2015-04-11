@@ -7,8 +7,8 @@ pushd ~
 cat > /tmp/settings.py <<EOF
 from .common import *
 
-MEDIA_URL = "/media/"
-STATIC_URL = "static/"
+MEDIA_URL = "http://localhost/media/"
+STATIC_URL = "http://localhost:8000/static/"
 ADMIN_MEDIA_PREFIX = "/static/admin/"
 
 # This should change if you want generate urls in emails
