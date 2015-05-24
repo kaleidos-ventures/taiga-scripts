@@ -29,9 +29,6 @@ SERVER_EMAIL = DEFAULT_FROM_EMAIL
 #EMAIL_HOST_PASSWORD = ""
 #EMAIL_PORT = 25
 
-REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
-    "rest_framework.renderers.JSONRenderer",
-)
 EOF
 
 if [ ! -e ~/taiga-back ]; then
