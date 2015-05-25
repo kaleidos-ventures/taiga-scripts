@@ -49,7 +49,7 @@ function taiga-runserver {
 
 function taiga-runserver-front {
     workon taiga
-    cd ~/taiga-front
+    cd ~/taiga-front-dist
     gulp
 }
 
