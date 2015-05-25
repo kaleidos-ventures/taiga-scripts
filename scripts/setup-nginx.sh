@@ -15,7 +15,7 @@ server {
     error_log /home/$USER/logs/nginx.error.log;
 
     location / {
-        root /home/$USER/taiga-front/dist/;
+        root /home/$USER/taiga-front-dist/dist/;
         try_files \$uri \$uri/ /index.html;
     }
 

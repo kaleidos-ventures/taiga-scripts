@@ -20,17 +20,17 @@ cat > /tmp/conf.json <<EOF
 EOF
 
 
-if [ ! -e ~/taiga-front ]; then
+if [ ! -e ~/taiga-front-dist ]; then
     # Initial clear
-    git clone https://github.com/taigaio/taiga-front-dist.git taiga-front
-    pushd ~/taiga-front
+    git clone https://github.com/taigaio/taiga-front-dist.git taiga-front-dist
+    pushd ~/taiga-front-dist
     git checkout -f stable
 
     mv /tmp/conf.json dist/js/
 
     popd
 else
-    pushd ~/taiga-front
+    pushd ~/taiga-front-dist
     git fetch
     git checkout -f stable 
     git reset --hard origin/stable
