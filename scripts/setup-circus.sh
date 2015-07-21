@@ -25,7 +25,7 @@ stderr_stream.max_bytes = 10485760
 stderr_stream.backup_count = 4
 
 [env:taiga]
-PATH = $PATH:/home/$USER/.virtualenvs/taiga/bin
+PATH = /home/$USER/.virtualenvs/taiga/bin:$PATH
 TERM=rxvt-256color
 SHELL=/bin/bash
 USER=taiga
