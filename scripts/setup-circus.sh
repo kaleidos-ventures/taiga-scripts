@@ -10,7 +10,7 @@ statsd = true
 [watcher:taiga]
 working_dir = /home/$USER/taiga-back
 cmd = gunicorn
-args = -w 3 -t 60 --pythonpath=. -b 0.0.0.0:8001 taiga.wsgi
+args = -w 3 -t 60 --pythonpath=. -b 127.0.0.1:8001 taiga.wsgi
 uid = $USER
 numprocesses = 1
 autostart = true
