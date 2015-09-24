@@ -40,17 +40,9 @@ function taiga-runserver {
         tmux select-window -t servers
     else
         tmux new-session -ds \$session -n servers
-        tmux send-keys -t \$session 'taiga-runserver-front' C-m
-        tmux split-window -t \$session
         tmux send-keys -t \$session 'taiga-runserver-back' C-m
         tmux attach -t \$session
     fi
-}
-
-function taiga-runserver-front {
-    workon taiga
-    cd ~/taiga-front
-    gulp
 }
 
 function taiga-runserver-back {
