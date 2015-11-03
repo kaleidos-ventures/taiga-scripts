@@ -1,11 +1,9 @@
 #!/bin/bash
 
-if [[ $EUID -eq 0 ]]; then
-  echo "taiga-scripts doesn't works properly if it used with root user." 1>&2
-  exit 1
-fi
+source ./scripts/setup-common.sh
 
-source ./setup-devel.sh
+# Setup Taiga frontend
+source ./scripts/setup-frontend.sh
 
 # Post Setup Services
 source ./scripts/setup-circus.sh
