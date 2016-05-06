@@ -26,7 +26,7 @@ if [ ! -e ~/taiga-front ]; then
     pushd ~/taiga-front
     git checkout -f stable
 
-    mv /tmp/conf.json dist/js/
+    mv /tmp/conf.json dist/
 
     popd
 else
