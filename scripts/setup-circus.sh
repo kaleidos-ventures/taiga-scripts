@@ -1,12 +1,8 @@
 #!/bin/bash
 
-cat > /tmp/circus.ini <<EOF
-[circus]
-check_delay = 5
-endpoint = tcp://127.0.0.1:5555
-pubsub_endpoint = tcp://127.0.0.1:5556
-statsd = true
+apt-install-if-needed circus
 
+cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
 working_dir = /home/$USER/taiga-back
 cmd = gunicorn
@@ -34,20 +30,9 @@ HOME=/home/$USER
 PYTHONPATH=/home/$USER/.local/lib/python3.4/site-packages
 EOF
 
-cat > /tmp/circus.conf <<EOF
-start on filesystem and net-device-up IFACE=lo
-stop on runlevel [016]
-
-respawn
-exec /usr/local/bin/circusd /home/$USER/conf/circus.ini
-EOF
-
 if [ ! -e ~/.setup/circus ]; then
-    sudo pip2 install circus
+    sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 
-    mv /tmp/circus.ini /home/$USER/conf/circus.ini
-    sudo mv /tmp/circus.conf /etc/init/circus.conf
-
-    sudo service circus start
+    sudo service circusd restart
     touch ~/.setup/circus
 fi
