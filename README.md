@@ -1,7 +1,7 @@
 # Taiga Bootstrap Scripts #
 
-![Kaleidos Project](http://kaleidos.net/static/img/badge.png "Kaleidos Project")
-[![Managed with Taiga](https://taiga.io/media/support/attachments/article-22/banner-gh.png)](https://taiga.io "Managed with Taiga")
+![Kaleidos Project](http://kaleidos.net/static/img/badge.svg "Kaleidos Project")
+[![Managed with Taiga.io](https://img.shields.io/badge/managed%20with-TAIGA.io-709f14.svg)](https://tree.taiga.io/project/taiga/ "Managed with Taiga.io")
 
 Scripts for initial deployment of Taiga services.
 
