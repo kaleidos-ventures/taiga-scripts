@@ -46,6 +46,10 @@ if [ ! -e ~/taiga-back ]; then
     workon taiga
 
     pip install -r requirements.txt
+    pip install kombu
+    pip install billiard
+    pip install cssutils
+    pip install cssselect
     python manage.py migrate --noinput
     python manage.py compilemessages
     python manage.py collectstatic --noinput
