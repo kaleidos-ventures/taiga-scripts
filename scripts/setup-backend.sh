@@ -51,7 +51,6 @@ if [ ! -e ~/taiga-back ]; then
     python manage.py collectstatic --noinput
     python manage.py loaddata initial_user
     python manage.py loaddata initial_project_templates
-    python manage.py loaddata initial_role
     python manage.py sample_data
 
     deactivate
