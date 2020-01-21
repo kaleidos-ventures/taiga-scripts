@@ -6,6 +6,9 @@ mkdir -p logs
 mkdir -p conf
 popd
 
+# System information and verification
+source ./scripts/setup-os-release.sh
+
 # Bootstrap
 # source ./scripts/setup-vars.sh
 source ./scripts/setup-config.sh
@@ -23,4 +26,3 @@ source ./scripts/setup-python.sh
 # Setup Taiga
 source ./scripts/setup-frontend.sh
 source ./scripts/setup-backend.sh
-
