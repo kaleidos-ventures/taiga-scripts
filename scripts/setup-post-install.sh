@@ -1,0 +1,7 @@
+echo "---------------------------------------------------"
+echo "Installed taiga.io:"
+echo "URL: $TAIGA_SCHEME://$TAIGA_DOMAIN"
+echo "Hostname: $TAIGA_HOSTNAME"
+echo "Import Sample Projects: $TAIGA_SAMPLE_DATA"
+echo "Public Registation Enabled: $TAIGA_PUBLIC_REGISTER_ENABLED"
+echo "---------------------------------------------------"
