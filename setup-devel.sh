@@ -11,6 +11,7 @@ source ./scripts/setup-os-release.sh
 
 # Bootstrap
 source ./scripts/setup-vars.sh
+source ./scripts/setup-hostname.sh
 source ./scripts/setup-config.sh
 source ./scripts/setup-apt.sh
 
