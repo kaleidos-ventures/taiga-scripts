@@ -53,7 +53,7 @@ if [ ! -e ~/taiga-back ]; then
     python manage.py loaddata initial_project_templates
 
     # Import sample projects unless explicitly set to "False" in setup-vars
-    if [ "$TAIGA_PUBLIC_REGISTER_ENABLED" != "False" ] ; then
+    if [ "$TAIGA_SAMPLE_DATA" != "False" ] ; then
       python manage.py sample_data
       python manage.py rebuild_timeline --purge
     fi
