@@ -5,7 +5,6 @@ if [[ $EUID -eq 0 ]]; then
   exit 1
 fi
 
-mkdir -p ~/.setup
 source ./setup-devel.sh
 
 # Post Setup Services
