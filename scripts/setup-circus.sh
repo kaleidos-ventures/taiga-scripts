@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-install-if-needed circus
+pip3 install circus
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
