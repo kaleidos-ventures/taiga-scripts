@@ -12,6 +12,8 @@ function dropdb-if-needed {
     done
 }
 
+mkdir -p ~/.setup
+
 if [ ! -e ~/.setup/postgresql ]; then
     apt-install-if-needed postgresql postgresql-contrib \
         postgresql-doc postgresql-server-dev-all

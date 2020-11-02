@@ -1,5 +1,7 @@
 # redis.sh
 
+mkdir -p ~/.setup
+
 if [ ! -e ~/.setup/redis ]; then
     touch ~/.setup/redis
 

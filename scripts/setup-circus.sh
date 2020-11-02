@@ -30,6 +30,8 @@ HOME=/home/$USER
 PYTHONPATH=/home/$USER/.local/lib/python3.4/site-packages
 EOF
 
+mkdir -p ~/.setup
+
 if [ ! -e ~/.setup/circus ]; then
     sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
 

@@ -1,3 +1,5 @@
+mkdir -p ~/.setup
+
 if [ ! -e ~/.setup/buildessential ]; then
     touch ~/.setup/buildessential
 
