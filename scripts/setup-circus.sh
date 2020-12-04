@@ -1,6 +1,6 @@
 #!/bin/bash
 
-apt-install-if-needed circus
+pip3 install circus --no-warn-script-location
 
 cat > /tmp/taiga-circus.ini <<EOF
 [watcher:taiga]
@@ -27,12 +27,36 @@ SHELL=/bin/bash
 USER=taiga
 LANG=en_US.UTF-8
 HOME=/home/$USER
-PYTHONPATH=/home/$USER/.local/lib/python3.4/site-packages
+PYTHONPATH=/home/$USER/.local/lib/python3.8/site-packages
 EOF
 
-if [ ! -e ~/.setup/circus ]; then
-    sudo mv /tmp/taiga-circus.ini /etc/circus/conf.d/taiga.ini
+cat > /tmp/taiga-circus.service <<EOF
+[Unit]
+Description=Circus process manager
+After=syslog.target network.target nss-lookup.target
 
+[Service]
+User=$USER
+Type=simple
+ExecReload=/home/$USER/.local/bin/circusctl reload
+ExecStart=/home/$USER/.local/bin/circusd /home/$USER/.local/lib/python3.8/site-packages/circus/conf.d/taiga.ini
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+EOF
+
+mkdir -p ~/.setup
+
+if [ ! -e ~/.setup/circus ]; then
+    mkdir -p $HOME/.local/lib/python3.8/site-packages/circus/conf.d
+    sudo mv /tmp/taiga-circus.ini $HOME/.local/lib/python3.8/site-packages/circus/conf.d/taiga.ini
+    sudo mv /tmp/taiga-circus.service /etc/systemd/system/circusd.service
+
+    sudo systemctl --system daemon-reload
     sudo service circusd restart
+    sudo systemctl enable circusd
+    
     touch ~/.setup/circus
 fi

@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if $(locale -a | grep -q 'locale-gen en_US.utf8'); then     
+    echo "Locale en_US.utf8 already enabled."; 
+else
+    echo "Enabling locale en_US.utf8 already enabled."; 
+    sudo locale-gen en_US.utf8
+fi
 
 pushd ~
 mkdir -p logs

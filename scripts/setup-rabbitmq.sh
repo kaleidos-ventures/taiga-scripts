@@ -30,6 +30,7 @@ function rabbit-activate-plugin {
     fi
 }
 
+mkdir -p ~/.setup
 
 if [ ! -e ~/.setup/rabbitmq ]; then
     touch ~/.setup/rabbitmq
