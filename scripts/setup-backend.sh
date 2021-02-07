@@ -7,15 +7,15 @@ pushd ~
 cat > /tmp/settings.py <<EOF
 from .common import *
 
-MEDIA_URL = "/media/"
-STATIC_URL = "/static/"
+MEDIA_URL = "$TAIGA_SCHEME://$TAIGA_DOMAIN/media/"
+STATIC_URL = "$TAIGA_SCHEME://$TAIGA_DOMAIN/static/"
 
 # This should change if you want generate urls in emails
 # for external dns.
-SITES["front"]["domain"] = "localhost:8000"
+SITES["front"]["domain"] = "$TAIGA_DOMAIN"
 
 DEBUG = True
-PUBLIC_REGISTER_ENABLED = True
+PUBLIC_REGISTER_ENABLED = $TAIGA_PUBLIC_REGISTER_ENABLED
 
 DEFAULT_FROM_EMAIL = "no-reply@example.com"
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
@@ -51,8 +51,12 @@ if [ ! -e ~/taiga-back ]; then
     python manage.py collectstatic --noinput
     python manage.py loaddata initial_user
     python manage.py loaddata initial_project_templates
-    python manage.py sample_data
-    python manage.py rebuild_timeline --purge
+
+    # Import sample projects unless explicitly set to "False" in setup-vars
+    if [ "$TAIGA_SAMPLE_DATA" != "False" ] ; then
+      python manage.py sample_data
+      python manage.py rebuild_timeline --purge
+    fi
 
     deactivate
     popd
